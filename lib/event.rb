@@ -1,3 +1,5 @@
+require "listable"
+
 class EventItem
   include Listable
 
