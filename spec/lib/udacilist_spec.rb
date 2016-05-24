@@ -94,6 +94,31 @@ describe UdaciList do
     end
   end
 
+  describe "#filter" do
+    context "list item type exist" do
+      it "will return a filtered list containing items of that type" do
+        list = create_list(title: "A larger list")
+        list.add("todo", "A todo item")
+        list.add("event", "An event item")
+        list.add("link", "A link item")
+
+        filtered_items = list.filter("todo")
+
+        expect(filtered_items.first).to be_an_instance_of(TodoItem)
+      end
+    end
+
+    context "list item type does not exist" do
+      it "will raise a NoItemExists Exception" do
+        list = create_list(title: "A larger list")
+        list.add("event", "An event item")
+        list.add("link", "A link item")
+
+        expect { list.filter("todo") }.to raise_error(UdaciListErrors::ItemDoesNotExistError, "There are no Todo items in this list.")
+      end
+    end
+  end
+
   private
 
   def create_list(title: "My New List")

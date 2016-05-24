@@ -7,4 +7,7 @@ module UdaciListErrors
 
   class InvalidPriorityValue < StandardError
   end
+
+  class ItemDoesNotExistError < StandardError
+  end
 end
