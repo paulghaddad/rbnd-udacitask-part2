@@ -1,3 +1,5 @@
+require "chronic"
+
 class TodoItem
   VALID_PRIORITY_TYPES = ["high", "medium", "low"]
 
