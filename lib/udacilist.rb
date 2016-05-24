@@ -1,3 +1,7 @@
+require "./lib/todo"
+require "./lib/event"
+require "./lib/link"
+
 class UdaciList
   VALID_TYPES = ["todo", "event", "link"]
   TYPE_TO_CLASS_MAPPING = { "todo" => TodoItem,

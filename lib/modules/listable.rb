@@ -2,7 +2,7 @@ require "colorize"
 
 module Listable
   def format_item_type(item)
-    "#{item_type(item)}: "
+    "#{item_type(item)}: ".ljust(10)
   end
 
   def format_description(description)
