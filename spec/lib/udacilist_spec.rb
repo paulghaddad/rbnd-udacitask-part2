@@ -105,9 +105,9 @@ describe UdaciList do
 -------------
 A larger list
 -------------
-1) A todo item                   due: N/A
-2) An event item                 event dates: N/A
-3) A link item                   site name: 
+1) TodoItem: A todo item                   due: N/A
+2) EventItem: An event item                 event dates: N/A
+3) LinkItem: A link item                   site name: 
 LIST
   end
 end

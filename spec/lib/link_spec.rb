@@ -42,7 +42,7 @@ describe LinkItem do
     it "is a formatted string of the item" do
       link_item = create_link_item(url: "www.google.com", site_name: "Google")
 
-      expect(link_item.details).to eq("www.google.com                site name: Google")
+      expect(link_item.details).to eq("LinkItem: www.google.com                site name: Google")
     end
   end
 

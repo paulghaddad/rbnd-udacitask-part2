@@ -43,12 +43,12 @@ describe TodoItem do
   end
 
   describe "#details" do
-    it "shows the details of the todo item" do
+    it "shows the item type and details of the todo item" do
       todo = create_todo_item(description: "My new todo",
                               due: "5-1-2016",
                               priority: "high")
 
-      expect(todo.details).to match(/My new todo                   due: 05\/01\/16.+⇧/)
+      expect(todo.details).to match(/TodoItem: My new todo                   due: 05\/01\/16.+⇧/)
     end
   end
 
