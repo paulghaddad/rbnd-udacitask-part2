@@ -48,7 +48,7 @@ describe TodoItem do
                               due: "5-1-2016",
                               priority: "high")
 
-      expect(todo.details).to match(/TodoItem: My new todo                   due: 05\/01\/16.+⇧/)
+      expect(todo.details).to match(/Todo: My new todo                   due: 05\/01\/16.+⇧/)
     end
   end
 

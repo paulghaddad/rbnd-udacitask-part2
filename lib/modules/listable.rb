@@ -2,7 +2,7 @@ require "colorize"
 
 module Listable
   def format_item_type(item)
-    "#{item.class}: "
+    "#{item_type(item)}: "
   end
 
   def format_description(description)
@@ -25,5 +25,11 @@ module Listable
     value = " ⇩".colorize(:green) if priority == "low"
     value = "" if !priority
     return value
+  end
+
+  private
+
+  def item_type(item)
+    item.class.to_s.gsub(/Item/, "")
   end
 end

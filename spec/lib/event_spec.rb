@@ -38,7 +38,7 @@ describe EventItem do
                                  start_date: "2016-05-1",
                                  end_date: "2016-05-20")
 
-      expect(event_item.details).to eq("EventItem: New item                      event dates: 05/01/16 -- 05/20/16")
+      expect(event_item.details).to eq("Event: New item                      event dates: 05/01/16 -- 05/20/16")
     end
   end
 end
