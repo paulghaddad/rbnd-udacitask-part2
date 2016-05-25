@@ -9,7 +9,7 @@ class TodoItem
 
   def initialize(description, options={})
     @description = description
-    @due = options[:due] ? Chronic.parse(options[:due]) : options[:due]
+    @due = Chronic.parse(options[:due]) || options[:due]
     @priority = set_priority(options[:priority]) if options[:priority]
   end
 

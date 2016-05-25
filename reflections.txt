@@ -2,8 +2,8 @@
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
 2. Describe the 2 features you added to the project.
-  a) Feature 1...
-  b) Feature 2...
+  a) Add completed status to items
+  b) Add progress bar output for the % completed of each item
 
 # REFLECTIONS
 # -------------------------------------------------------

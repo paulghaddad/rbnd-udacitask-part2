@@ -4,9 +4,9 @@ require "./lib/link"
 
 class UdaciList
   VALID_TYPES = ["todo", "event", "link"]
-  TYPE_TO_CLASS_MAPPING = { "todo" => TodoItem,
-                            "event" => EventItem,
-                            "link" => LinkItem }
+  ITEM_TYPE_TO_CLASS_MAPPING = { "todo" => TodoItem,
+                                 "event" => EventItem,
+                                 "link" => LinkItem }
 
   attr_reader :title, :items
 
@@ -30,35 +30,45 @@ class UdaciList
   end
 
   def all
-    puts "-" * @title.length
-    puts @title
-    puts "-" * @title.length
-    @items.each_with_index do |item, position|
+    puts "-" * title.length
+    puts title
+    puts "-" * title.length
+    items.each_with_index do |item, position|
       puts "#{position + 1}) #{item.details}"
     end
   end
 
   def filter(item_type)
-    filtered_items = items.select do |item|
-      item.class == item_class(item_type)
-    end
-    if filtered_items.empty?
-      raise UdaciListErrors::ItemDoesNotExistError, "There are no #{item_type.capitalize} items in this list."
-    end
-    filtered_items
+    filtered_items = filter_items(item_type)
+    check_if_no_filtered_items(filtered_items, item_type) || filtered_items
   end
 
   private
 
   def parse_type(type)
     type = type.downcase
-    unless VALID_TYPES.include?(type)
-      raise UdaciListErrors::InvalidItemTypeError, "#{type} is not a supported item type."
-    end
-    type
+    check_if_valid_item_type(type) || type
   end
 
   def item_class(item_type)
-    TYPE_TO_CLASS_MAPPING[item_type]
+    ITEM_TYPE_TO_CLASS_MAPPING[item_type]
+  end
+
+  def filter_items(item_type)
+    items.select do |item|
+      item.class == item_class(item_type)
+    end
+  end
+
+  def check_if_no_filtered_items(filtered_items, item_type)
+    if filtered_items.empty?
+      raise UdaciListErrors::ItemDoesNotExistError, "There are no #{item_type.capitalize} items in this list."
+    end
+  end
+
+  def check_if_valid_item_type(item_type)
+    unless VALID_TYPES.include?(item_type)
+      raise UdaciListErrors::InvalidItemTypeError, "#{item_type} is not a supported item type."
+    end
   end
 end
