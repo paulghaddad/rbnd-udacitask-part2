@@ -18,6 +18,12 @@ describe LinkItem do
         expect(link_item.site_name).to eq(site_name)
       end
     end
+
+    it "has a completion status initially set to not_completed" do
+      link_item = create_link_item
+
+      expect(link_item.completion_status).to eq(:not_complete)
+    end
   end
 
   describe "#format_name" do

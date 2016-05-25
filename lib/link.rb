@@ -1,11 +1,14 @@
 class LinkItem
   include Listable
+  include Completable
 
   attr_reader :description, :site_name
+  attr_accessor :completion_status
 
   def initialize(url, options={})
     @description = url
     @site_name = options[:site_name]
+    @completion_status = :not_complete
   end
 
   def format_name
