@@ -6,11 +6,13 @@ class TodoItem
   include Listable
 
   attr_reader :description, :due, :priority
+  attr_accessor :status
 
   def initialize(description, options={})
     @description = description
     @due = Chronic.parse(options[:due]) || options[:due]
     @priority = set_priority(options[:priority]) if options[:priority]
+    @status = :not_completed
   end
 
   def details
@@ -18,6 +20,18 @@ class TodoItem
     format_description(description) + "due: " +
     format_date(due) +
     format_priority(priority)
+  end
+
+  def complete_item
+    self.status = :completed
+  end
+
+  def completed?
+    if @status == :completed
+      true
+    elsif @status == :not_completed
+      false
+    end
   end
 
   private
