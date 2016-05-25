@@ -41,12 +41,10 @@ describe TodoItem do
       end
     end
 
-    describe "#status" do
-      it "is initially set to not_completed" do
-        todo = create_todo_item
+    it "has a completion status initially set to not_completed" do
+      todo = create_todo_item
 
-        expect(todo.status).to eq(:not_completed)
-      end
+      expect(todo.completion_status).to eq(:not_complete)
     end
   end
 
@@ -60,35 +58,6 @@ describe TodoItem do
     end
   end
 
-  describe "#complete_item" do
-    it "changes the item's status to completed" do
-      todo = create_todo_item
-
-      todo.complete_item
-
-      expect(todo.status).to eq(:completed)
-    end
-  end
-
-  describe "#completed?" do
-    context "item status is not complete" do
-      it "is false" do
-        todo = create_todo_item
-
-        expect(todo).to_not be_completed
-      end
-    end
-
-    context "item status is completed" do
-      it "is true" do
-        todo = create_todo_item
-
-        todo.complete_item
-
-        expect(todo).to be_completed
-      end
-    end
-  end
 
   private
 

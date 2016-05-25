@@ -4,15 +4,16 @@ class TodoItem
   VALID_PRIORITY_TYPES = ["high", "medium", "low"]
 
   include Listable
+  include Completable
 
   attr_reader :description, :due, :priority
-  attr_accessor :status
+  attr_accessor :completion_status
 
   def initialize(description, options={})
     @description = description
     @due = Chronic.parse(options[:due]) || options[:due]
     @priority = set_priority(options[:priority]) if options[:priority]
-    @status = :not_completed
+    @completion_status = :not_complete
   end
 
   def details
@@ -22,17 +23,6 @@ class TodoItem
     format_priority(priority)
   end
 
-  def complete_item
-    self.status = :completed
-  end
-
-  def completed?
-    if @status == :completed
-      true
-    elsif @status == :not_completed
-      false
-    end
-  end
 
   private
 
