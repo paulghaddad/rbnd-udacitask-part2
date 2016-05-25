@@ -43,6 +43,10 @@ class UdaciList
     check_if_no_filtered_items(filtered_items, item_type) || filtered_items
   end
 
+  def items_complete
+    items.count(&:completed?)
+  end
+
   private
 
   def parse_type(type)

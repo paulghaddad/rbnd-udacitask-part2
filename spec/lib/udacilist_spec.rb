@@ -119,6 +119,19 @@ describe UdaciList do
     end
   end
 
+  describe "#items_complete" do
+    it "will return the number of items that are complete" do
+      list = create_list(title: "A larger list")
+      list.add("todo", "A todo item")
+      list.add("event", "An event item")
+      list.add("link", "A link item")
+
+      list.items.first.complete_item
+
+      expect(list.items_complete).to eq(1)
+    end
+  end
+
   private
 
   def create_list(title: "My New List")
@@ -126,13 +139,13 @@ describe UdaciList do
   end
 
   def list_output
-<<-LIST
+    <<-LIST
 -------------
 A larger list
 -------------
 1) Todo:     A todo item                   due: N/A
 2) Event:    An event item                 event dates: N/A
 3) Link:     A link item                   site name: 
-LIST
+    LIST
   end
 end
