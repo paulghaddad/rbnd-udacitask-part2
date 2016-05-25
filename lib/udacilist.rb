@@ -1,7 +1,6 @@
 require "./lib/todo"
 require "./lib/event"
 require "./lib/link"
-require "pry"
 require "ruby-progressbar"
 
 class UdaciList
@@ -38,7 +37,7 @@ class UdaciList
     items.each_with_index do |item, position|
       puts "#{position + 1}) #{item.details}"
     end
-
+    puts
     puts print_progress_bar
   end
 
@@ -94,7 +93,6 @@ class UdaciList
 
   def print_progress_bar
     progress_bar = create_progress_bar
-    puts
     increment_progress_bar(progress_bar)
     progress_bar
   end

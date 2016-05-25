@@ -13,6 +13,8 @@ list.add("todo", "Buy groceries", priority: "high")
 list.add("event", "Birthday Party", start_date: "2016-05-08")
 list.add("event", "Vacation", start_date: "2016-05-28", end_date: "2016-05-31")
 list.add("link", "https://github.com", site_name: "GitHub Homepage")
+list.items[2].complete_item
+list.items[4].complete_item
 list.all
 list.delete(3)
 list.all
@@ -28,6 +30,10 @@ new_list.add("event", "Vacation", start_date: "Dec 20", end_date: "Dec 30")
 new_list.add("event", "Life happens")
 new_list.add("link", "https://www.udacity.com/", site_name: "Udacity Homepage")
 new_list.add("link", "http://ruby-doc.org")
+new_list.items[1].complete_item
+new_list.items[2].complete_item
+new_list.items[3].complete_item
+new_list.items[4].complete_item
 
 # SHOULD RETURN ERROR MESSAGES
 # ----------------------------
@@ -41,4 +47,5 @@ new_list.all
 
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
-# new_list.filter("event")
+new_list.filter("event")
+
