@@ -1,4 +1,6 @@
 require "chronic"
+require "./lib/modules/listable"
+require "./lib/modules/completable"
 
 class TodoItem
   VALID_PRIORITY_TYPES = ["high", "medium", "low"]

@@ -84,11 +84,12 @@ describe UdaciList do
   end
 
   describe "#all" do
-    it "will print a list of all the items" do
+    it "will print a list of all the items and the list's completion progress" do
       list = create_list(title: "A larger list")
       list.add("todo", "A todo item")
       list.add("event", "An event item")
       list.add("link", "A link item")
+      list.items.first.complete_item
 
       expect { list.all }.to output(list_output).to_stdout
     end
@@ -146,6 +147,8 @@ A larger list
 1) Todo:     A todo item                   due: N/A
 2) Event:    An event item                 event dates: N/A
 3) Link:     A link item                   site name: 
+
+Progress: |======================                                              |
     LIST
   end
 end

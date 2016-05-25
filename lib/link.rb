@@ -1,3 +1,6 @@
+require "./lib/modules/listable"
+require "./lib/modules/completable"
+
 class LinkItem
   include Listable
   include Completable

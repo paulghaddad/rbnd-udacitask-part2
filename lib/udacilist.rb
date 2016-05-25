@@ -1,6 +1,8 @@
 require "./lib/todo"
 require "./lib/event"
 require "./lib/link"
+require "pry"
+require "ruby-progressbar"
 
 class UdaciList
   VALID_TYPES = ["todo", "event", "link"]
@@ -36,6 +38,8 @@ class UdaciList
     items.each_with_index do |item, position|
       puts "#{position + 1}) #{item.details}"
     end
+
+    puts print_progress_bar
   end
 
   def filter(item_type)
@@ -74,5 +78,24 @@ class UdaciList
     unless VALID_TYPES.include?(item_type)
       raise UdaciListErrors::InvalidItemTypeError, "#{item_type} is not a supported item type."
     end
+  end
+
+  def create_progress_bar
+    ProgressBar.create(:title => "Progress",
+                                 :total => items.size,
+                                 :length => 80)
+  end
+
+  def increment_progress_bar(progress_bar)
+    items_complete.times do
+      progress_bar.increment
+    end
+  end
+
+  def print_progress_bar
+    progress_bar = create_progress_bar
+    puts
+    increment_progress_bar(progress_bar)
+    progress_bar
   end
 end
