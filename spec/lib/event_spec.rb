@@ -17,7 +17,7 @@ describe EventItem do
 
         event_item = create_event_item(start_date: start_date)
 
-        expect(event_item.start_date).to eq(Date.new(2016, 5, 1))
+        expect(event_item.start_date).to eq(Chronic.parse(Date.new(2016, 5, 1)))
       end
     end
 
@@ -27,7 +27,7 @@ describe EventItem do
 
         event_item = create_event_item(end_date: end_date)
 
-        expect(event_item.end_date).to eq(Date.new(2016, 5, 1))
+        expect(event_item.end_date).to eq(Chronic.parse(Date.new(2016, 5, 1)))
       end
     end
 

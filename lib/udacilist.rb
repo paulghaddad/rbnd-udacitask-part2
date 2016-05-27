@@ -18,9 +18,7 @@ class UdaciList
 
   def add(type, description, options={})
     type= parse_type(type)
-    @items.push TodoItem.new(description, options) if type == "todo"
-    @items.push EventItem.new(description, options) if type == "event"
-    @items.push LinkItem.new(description, options) if type == "link"
+    @items << ITEM_TYPE_TO_CLASS_MAPPING[type].new(description, options)
   end
 
   def delete(index)
@@ -82,7 +80,7 @@ class UdaciList
   def create_progress_bar
     ProgressBar.create(:title => "Progress",
                                  :total => items.size,
-                                 :length => 80)
+                                 :length => 50)
   end
 
   def increment_progress_bar(progress_bar)
